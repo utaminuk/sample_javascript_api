@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./src/history.js" defer></script>
+    <title>History API</title>
 </head>
 <body>
-    <h1>History API でURLを基点にデータを操作</h1>
-    <p>説明文</p>
+    <h1>History API</h1>
+    <p>現在保存されているHistoryを表示</p>
     <hr />
 
-    <h2>入力</h2>
-    <form>
-        <input type="text" id="userInput" value="" placeholder="ここにURLが入る" />
-    </form>
     <h2>結果</h2>
     <p id="result"></p>
+
+<script type="text/javascript">
+(function(){
+    const result = {
+        element: document.getElementById('result')
+    }
+    window.onload = function () {
+        // 初期化
+        history.pushState({ path: location.pathname }, null, location.pathname);
+        result.element.textContent = history.state.path;
+    };
+})();
+</script>
 
 <style>
     body {
