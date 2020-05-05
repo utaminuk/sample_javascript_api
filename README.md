@@ -1,4 +1,6 @@
-# sample_history_api
+# JavaScriptのメモ
+
+気になったJavaScriptの機能などをメモしていく
 
 ### インストール
 

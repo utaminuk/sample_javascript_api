@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location: assign()</title>
+    <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Location: assign()</h1>
+    <p>URLをクリックするとGoogleに移動。ブラウザの考える不正なURLだと例外を出す</p>
+    <hr />
+
+    <input type="text" id="link" value="hogehoge://hogehoge.com" placeholder="hogehoge://hogehoge.com" />
+    <input type="submit" id="submit" value="Jump" />
+
+    <hr />
+    <h3>結果</h3>
+    <div id="result"></div>
+
+<script type="text/javascript">
+(function(){
+    const link = document.getElementById('link');
+    const submit = document.getElementById('submit');
+    const result = document.getElementById('result');
+
+    submit.addEventListener('click', function() {
+        try {
+            if (!location.assign(link.value)) {
+                throw new DOMException('不正なURLです', DOMException.DataError);
+            }
+        } catch (error) {
+            console.log(error);
+            result.innerHTML = `${error.name}: ${error.message}`;
+        }
+    });
+})();
+</script>
+</body>
+</html>
